@@ -1,0 +1,193 @@
+@import "config";
+@import "menu";
+
+* {
+    box-sizing:border-box;
+}
+body{
+    @include background;
+    position:relative;
+    background-color: $primary-color;
+    color:set-text-color($primary-color);   
+    height:100%;
+    margin:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height:1.5;
+}
+
+// headings
+h1,h2,h3 {
+    margin: 0;
+    font-weight:400;
+
+    &.lg-heading {
+        font-size:6rem;
+    }
+    &.sm-heading {
+        margin-bottom:2rem;
+        padding:.2rem 1rem;
+        background-color: rgba(darken($primary-color,30),.5)
+    }
+}
+a {
+    color:#fff;
+    text-decoration:none;
+}
+header {
+   position:fixed;
+   width:100%;
+   z-index:2;
+ }
+.text-secondary {
+    color: $secondary-color;
+    
+}
+
+main {
+    padding: 4rem;
+    //height:100%;
+    min-height: 100vh;
+    position:relative;
+    .icons {
+        margin-top: 1rem;
+        a {
+            padding: 0.4rem;
+
+            &:hover {
+                color: $secondary-color;
+                @include easeOut()
+            }
+        }
+    }
+    &#home {
+        overflow:hidden;
+        h1 {
+            margin-top:20vh;
+           
+        }
+    }
+}
+
+.about-info {
+    display:grid;
+    grid-template-areas:
+    "bioimage bio bio"
+    "job1 job2 job3";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+
+    .bio-image {
+        grid-area: bioimage;
+        margin:auto;
+        border-radius:50%;
+        border: $secondary-color 3px solid;
+        width:300px;
+    }
+    .bio {
+        grid-area: bio;
+        h3 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+    .job-1 {
+        grid-area: job1;
+    }
+    .job-2 {
+        grid-area:job2;
+    }
+    .job-3{
+        grid-area: job3;
+    }
+    .job {
+        background:lighten($primary-color,5);
+        padding: .5rem;
+        border-bottom: $secondary-color 5px solid;
+    }
+}
+//work/project
+#work {
+    @include background;
+}
+.projects {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-gap:0.7rem;
+    img {
+        width:100%;
+        border: 3px #fff solid;
+        @include easeOut();
+        &:hover {
+            opacity: .5;
+            border-color: $secondary-color
+        }
+    }
+}
+
+.btn {
+    display:block;
+    padding: .5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+    &:hover {
+        background-color: $secondary-color;
+        color: set-text-color($secondary-color);
+    }
+}
+
+.btn-dark {
+    @extend .btn;
+    background: darken($primary-color,50);
+    color: #fff;
+}
+.btn-light{
+    @extend .btn;
+    background:lighten($primary-color,50);
+    color: #333;
+}
+
+// contact page
+#contact {
+    @include background
+}
+.boxes {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    margin-top:1rem;
+    align-items:center;
+    div {
+        font-size:1.5rem;
+        border: 3px #444 solid;
+        padding: 1.5rem 1.5rem;
+        margin-bottom:3rem;
+        font-weight:bold;
+        background-color:rgba(255,255,255,.8);
+        font-size:30px;
+        @include easeOut;
+
+        &:hover {
+            padding: .5rem 1.5rem;
+            background: $secondary-color;
+            color: set-text-color($secondary-color);
+            span {
+                color: set-text-color($secondary-color);
+            }
+        }
+    }
+}
+
+#main-footer {
+    width:100%;
+    bottom:0;
+    text-align:center;
+    padding:1rem;
+    background: darken($primary-color, 10);
+    color: set-text-color($primary-color);
+    height:60px;
+}
+
+@import "mobile";
